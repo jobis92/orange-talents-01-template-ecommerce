@@ -24,7 +24,7 @@ public class Usuario {
 
 	@NotBlank
 	@Email
-	private String login;
+	private String email;
 
 	@NotBlank
 	@Size(min = 6)
@@ -33,13 +33,13 @@ public class Usuario {
 	@NotNull
 	private LocalDate dataCadastro;
 
-	public Usuario(@NotBlank @Email String login, @NotBlank @Size(min = 6) String senha,
+	public Usuario(@NotBlank @Email String email, @NotBlank @Size(min = 6) String senha,
 			@NotNull LocalDate dataCadastro) {
-		Assert.isTrue(StringUtils.hasLength(login), "email não pode ser em branco");
+		Assert.isTrue(StringUtils.hasLength(email), "email não pode ser em branco");
 		Assert.isTrue(StringUtils.hasLength(senha), "senha não pode ser em branco");
 		Assert.isTrue(senha.length() >= 6, "senha precisa de no minimo 6 caracteres");
 
-		this.login = login;
+		this.email = email;
 		this.senha = new BCryptPasswordEncoder().encode(senha);
 		this.dataCadastro = dataCadastro;
 
@@ -47,7 +47,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [Id=" + Id + ", login=" + login + ", senha=" + senha + ", dataCadastro=" + dataCadastro + "]";
+		return "Usuario [Id=" + Id + ", email=" + email + ", senha=" + senha + ", dataCadastro=" + dataCadastro + "]";
 	}
 
 }
