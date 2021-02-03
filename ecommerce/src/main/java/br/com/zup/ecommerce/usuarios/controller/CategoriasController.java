@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zup.ecommerce.usuarios.model.Usuario;
-import br.com.zup.ecommerce.usuarios.request.NovoUsuarioRequest;
+import br.com.zup.ecommerce.usuarios.model.Categoria;
+import br.com.zup.ecommerce.usuarios.request.NovaCategoriaRequest;
 
 @RestController
-public class UsuariosController {
+public class CategoriasController {
 
 	@PersistenceContext
 	private EntityManager manager;
 
-	@PostMapping(value = "/usuarios")
+	@PostMapping(value = "/categorias")
 	@Transactional
-	public String cadastro(@RequestBody @Valid NovoUsuarioRequest request) {
-		Usuario usuario = request.toModel();
-		manager.persist(usuario);
+	public String cadastro(@RequestBody @Valid NovaCategoriaRequest request) {
+		Categoria categoria = request.toModel(manager);
+		manager.persist(categoria);
+		return categoria.toString();
 
-		return usuario.toString();
 	}
 
 }

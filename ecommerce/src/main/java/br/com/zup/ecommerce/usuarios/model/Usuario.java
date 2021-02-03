@@ -1,6 +1,7 @@
 package br.com.zup.ecommerce.usuarios.model;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,5 +50,10 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [Id=" + Id + ", email=" + email + ", senha=" + senha + ", dataCadastro=" + dataCadastro + "]";
 	}
+
+
+public Long getId() {
+	return Id;
+}
 
 }
