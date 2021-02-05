@@ -23,6 +23,8 @@ public class UsuariosController {
 	public String cadastro(@RequestBody @Valid NovoUsuarioRequest request) {
 		Usuario usuario = request.toModel();
 		manager.persist(usuario);
+		System.out.println(usuario.getUsername());
+		System.out.println(usuario.getPassword());
 
 		return usuario.toString();
 	}
